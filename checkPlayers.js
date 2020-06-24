@@ -45,7 +45,7 @@ class PlayerCounter {
       // Display server status.
       // offline/online
       if (displayStatus !== null) {
-        this.element.innerText = response.online ? 'Ligado' : 'Desligado';
+        this.element.innerText = response.online ? 'online' : 'offline';
         return;
       }
 
@@ -75,3 +75,13 @@ const onDomLoad = function() {
       format: element.getAttribute('data-playercounter-format'),
       refreshRate: element.getAttribute('data-playercounter-refreshRate')
     });
+  }
+};
+
+if (document.readyState === 'complete') {
+  onDomLoad();
+} else {
+  window.onload = onDomLoad;
+}
+
+window.PlayerCounter = PlayerCounter;
